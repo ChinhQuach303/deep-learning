@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <style>
+        /* Tổng thể */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Khung chứa nội dung */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1e90ff;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #1e90ff;
+        }
+
+        button {
+            background-color: #1e90ff;
+            color: white;
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4682b4;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #333;
+            font-weight: normal;
+        }
+
+        .prediction-text {
+            font-size: 20px;
+            color: #2f4f4f;
+            font-weight: bold;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Weather Forecast Prediction</h1>
+
+        <div class="form-container">
+            <form action="/predict" method="POST">
+                <label for="city">Enter City Name:</label>
+                <input type="text" id="city" name="city" required placeholder="e.g., Hanoi">
+                <button type="submit">Predict</button>
+            </form>
+        </div>
+
+        {% if prediction_text %}
+        <h2 class="prediction-text">{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
